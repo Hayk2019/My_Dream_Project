@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
 		Reflect();
 		Jump();
 		checkingGround();
+		Attack();
 	}
 	public float speed = 2f;
 	public Vector2 moveVector;
@@ -47,6 +48,12 @@ public class Movement : MonoBehaviour
 	void checkingGround() {
 		onGround = Physics2D.OverlapCircle(GroundCheck.position,checkRadius,Ground);
 		//anim.SetBool("onGround", onGround);
+	}
+	protected bool attack = false;
+	void Attack() {
+		attack = (Input.GetAxis("Fire1") == 1) ? true : false;
+		//Debug.Log(attack);
+		anim.SetBool("attack", attack);
 	}
 }
 
